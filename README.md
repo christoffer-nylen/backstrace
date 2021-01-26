@@ -1,5 +1,20 @@
 # backstrace
-**backstrace** searches for PATTERNS in each file that was opened by a process that was traced using [strace](https://man7.org/linux/man-pages/man1/strace.1.html). The tool accepts an strace log as input, where the "ttt" format has been used (explicit) and the syscall for OPEN has been traced (default).
+**backstrace** searches for PATTERNS in each file that was opened by a process that was traced using [strace](https://man7.org/linux/man-pages/man1/strace.1.html). The tool accepts an strace output FILE as input, where the `-ttt` option is used and the syscall for `OPEN` is traced.
+
+For example, if you would like to search for PATTERNS in some complex buildsystem:
+
+```
+$ strace -ttt -o make.log make
+Traceback (most recent call last):
+  File "build_engine.py", line 42, in <module>
+    say('OMG')
+  File "build_engine.py", line 13, in say
+    print("Checking " + nam)
+Exception: '
+
+$ backstrace make.log clever_function
+
+```
 
 It uses [pystrace](https://github.com/dirtyharrycallahan/pystrace) to parse the strace log, and [grep](https://man7.org/linux/man-pages/man1/grep.1.html) to print the lines that matches a pattern.
 
