@@ -1,5 +1,5 @@
 # backstrace
-**backstrace** searches for PATTERNS in each file that was opened by a processed traced using [strace](https://man7.org/linux/man-pages/man1/strace.1.html). The tool accepts an strace log as input, where the "ttt" format has been used (explicit) and the syscall for OPEN has been traced (default).
+**backstrace** searches for PATTERNS in each file that was opened by a process that was traced using [strace](https://man7.org/linux/man-pages/man1/strace.1.html). The tool accepts an strace log as input, where the "ttt" format has been used (explicit) and the syscall for OPEN has been traced (default).
 
 It uses [pystrace](https://github.com/dirtyharrycallahan/pystrace) to parse the strace log, and [grep](https://man7.org/linux/man-pages/man1/grep.1.html) to print the lines that matches a pattern.
 
