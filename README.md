@@ -1,13 +1,25 @@
 # backstrace
 **backstrace** searches for PATTERNS in each file referenced in an [strace](https://man7.org/linux/man-pages/man1/strace.1.html) log.
 
-[grep](https://man7.org/linux/man-pages/man1/grep.1.html) is used to print the lines that matches a pattern.
+Internally backstrace uses:
+* [grep](https://man7.org/linux/man-pages/man1/grep.1.html) - to print the lines that matches a pattern.
+* [pystrace](https://github.com/dirtyharrycallahan/pystrace) - to parse the strace log. 
+
+backstrace expects the analyzed file to contain timestamps in the "ttt" format so that the matching pattern results can be presented in a timely order. For example, if you would like to analyze the strace of "make", do the following:
+
+```
+$ strace -ttt -o make.log make
+```
 
 PATTERNS are interpreted as basic regular expressions (default option in grep).
 
 The strace log must be generated with atlease the following options enabled:
 * the `OPEN` system call must be logged (default) - to that referenced files can be searched for PATTERNS.
 * the `-ttt` option - so that the results can be presented in a correct order.
+
+Example:
+
+Solve buildsystem issues by searching for PATTERNS in files that was accessed during the build process.
 
 In the simplest case strace runs the specified command until it
        exits.  It intercepts and records the system calls which are
