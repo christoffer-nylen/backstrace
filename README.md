@@ -5,7 +5,7 @@ Internally backstrace uses:
 * [grep](https://man7.org/linux/man-pages/man1/grep.1.html) - to print the lines that matches a pattern.
 * [pystrace](https://github.com/dirtyharrycallahan/pystrace) - to parse the strace log. 
 
-backstrace expects the analyzed file to contain timestamps in the "ttt" format so that the matching pattern results can be presented in a timely order. For example, if you would like to analyze the strace of "make", do the following:
+backstrace expects the provided strace log to contain timestamps in the "ttt" format so that the matching pattern results can be presented in a timely order. For example, if you would like to analyze the strace of "make", do the following:
 
 ```
 $ strace -ttt -o make.log make
