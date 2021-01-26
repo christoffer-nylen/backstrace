@@ -1,5 +1,5 @@
 # backstrace
-**backstrace** searches for PATTERNS in each file that was opened by a process that was traced using [strace](https://man7.org/linux/man-pages/man1/strace.1.html). The tool expects an strace FILE where the `-ttt` format is used and the syscall for `OPEN` is traced (default).
+**backstrace** searches for PATTERNS in each file that was opened by a process that was traced using [strace](https://man7.org/linux/man-pages/man1/strace.1.html). The tool analyzes an strace FILE where the `-ttt` format has been used and the syscall for `OPEN` has been traced (default).
 
 For example, if you would like to understand which files to start look if you get a cryptic output message from a complex build system.
 
