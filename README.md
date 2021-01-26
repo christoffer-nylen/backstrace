@@ -1,5 +1,5 @@
 # backstrace
-**backstrace** searches for PATTERNS in each file referenced in an [strace](https://man7.org/linux/man-pages/man1/strace.1.html) log.
+**backstrace** searches for PATTERNS in each file that was referenced by a processed traced using [strace](https://man7.org/linux/man-pages/man1/strace.1.html).
 
 It uses [pystrace](https://github.com/dirtyharrycallahan/pystrace) to parse the strace log, and [grep](https://man7.org/linux/man-pages/man1/grep.1.html) to print the lines that matches a pattern.
 
