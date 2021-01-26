@@ -3,6 +3,6 @@
 
 [grep](https://man7.org/linux/man-pages/man1/grep.1.html) is used to print the lines that matches a pattern.
 
-PATTERNS are interpreted as basic regular expressions (the default when using grep).
+PATTERNS are interpreted as basic regular expressions (default option in grep).
 ## Syntax
 backstrace [OPTION...] [PATTERN ..] [FILE]
