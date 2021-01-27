@@ -1,5 +1,5 @@
 # backstrace
-**backstrace** searches for PATTERNS in each file that was opened by the traced process. This is achieved by analyzing the output from [strace](https://man7.org/linux/man-pages/man1/strace.1.html). 
+**backstrace** searches for PATTERNS in each file that was opened by a traced process. This is achieved by analyzing the output from [strace](https://man7.org/linux/man-pages/man1/strace.1.html). 
 
 **strace** must be executed with the `-ttt` format option.
 
