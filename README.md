@@ -2,8 +2,8 @@
 Searches for PATTERNS in each file that was opened by a traced process, by analyzing the output from [strace](https://man7.org/linux/man-pages/man1/strace.1.html). 
 
 The primary goals of `backstrace` are:
-* Identify recently opened files that might be causing an unexpected program exit.
-* Identify a pattern in recently opened files, that might might provide further hints about an unexpected program exit.
+* Identify recently opened files - that might be causing an unexpected program exit.
+* Identify a pattern in recently opened files - that might might provide further hints about an unexpected program exit.
 
 Notes:
 * `strace` must be executed with the `-ttt` format option, so that the results can be presented in a timely order.
