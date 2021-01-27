@@ -1,5 +1,5 @@
 # backstrace
-**backstrace** searches for PATTERNS in each file that was opened by a process traced with [strace](https://man7.org/linux/man-pages/man1/strace.1.html). It accepts an strace log FILE as input, where strace has been executed with the `-ttt` format option.
+**backstrace** analyzes the output from [strace](https://man7.org/linux/man-pages/man1/strace.1.html). It searches for PATTERNS in each file that was opened by the traced process. It expects that strace has been executed with the `-ttt` format option.
 
 Example: A trouble-shooter wants to find the cause of a build system failure.
 
