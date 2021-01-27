@@ -1,6 +1,10 @@
 # backstrace
 **backstrace** searches for PATTERNS in each file that was opened by a traced process. This is achieved by analyzing the output from [strace](https://man7.org/linux/man-pages/man1/strace.1.html). 
 
+The primary goals of `backstrace` are:
+* Find recently opened files that might provde hints about a problem.
+* Find patterns in recently opened files that might provide hints about a problem.
+
 Example: A trouble-shooter wants to find the cause of a build system failure.
 
 ```
