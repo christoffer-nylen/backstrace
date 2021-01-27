@@ -20,6 +20,8 @@ Exception: '
 $ backstrace make.log clever_function
 ```
 
+What files were opened?
+
 Notes:
 * **strace** must be executed with the `-ttt` format option, this is needed so that the results can be presented in a timely order.
 
