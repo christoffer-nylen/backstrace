@@ -7,6 +7,7 @@ The primary goals of `backstrace` are:
 
 Notes:
 * **strace** must be executed with the `-ttt` format option, so that the results can be presented in a timely order.
+* PATTERNS are interpreted as basic regular expressions (the default option when using [grep](https://man7.org/linux/man-pages/man1/grep.1.html)).
 
 ## Examples
 Which opened files contains the word `foo`?
@@ -37,7 +38,7 @@ $ backstrace make.log -l
 
 ## Implementation
 
-The [pystrace](https://github.com/dirtyharrycallahan/pystrace) project is used to parse the strace log, and [grep](https://man7.org/linux/man-pages/man1/grep.1.html) is used to print the lines that matches a pattern. PATTERNS are interpreted as basic regular expressions (the default option when using grep). The strace '-ttt' format lets the results be presented in a timely order (starting with the most recently opened files).
+The [pystrace](https://github.com/dirtyharrycallahan/pystrace) project is used to parse the strace log, and [grep](https://man7.org/linux/man-pages/man1/grep.1.html) is used to print the lines that matches a pattern.
 
 ## Syntax
 backstrace [OPTION...] [PATTERN ..] [FILE]
