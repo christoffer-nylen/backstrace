@@ -36,9 +36,9 @@ Exception: '
 $ backstrace make.log -l
 ```
 
+## Syntax
+backstrace [OPTION...] [PATTERN ..] [FILE]
+
 ## Implementation
 
 The [pystrace](https://github.com/dirtyharrycallahan/pystrace) project is used to parse the strace log, and [grep](https://man7.org/linux/man-pages/man1/grep.1.html) is used for searching and presenting the lines that match a pattern.
-
-## Syntax
-backstrace [OPTION...] [PATTERN ..] [FILE]
