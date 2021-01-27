@@ -2,10 +2,11 @@
 Searches for PATTERNS in each file that was opened by a traced process, by analyzing the output from [strace](https://man7.org/linux/man-pages/man1/strace.1.html). 
 
 The primary goals of `backstrace` are:
-* Find recently opened files that might provde hints about a problem.
+* List files that where opened before an unexpected program exit.
 * Find patterns in recently opened files that might provide hints about a problem.
 
-Example: A trouble-shooter wants to find the cause of a build system failure.
+## Examples
+What files mention `foo`?
 
 ```
 $ strace -ttt -o make.log make
