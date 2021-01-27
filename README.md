@@ -6,7 +6,7 @@ The primary goals of `backstrace` are:
 * Identify a pattern in recently opened files - that might explain an unexpected program exit.
 
 Notes:
-* `strace` must be executed with the `-ttt` format option, so that the results can be presented in a timely order.
+* `strace` must be executed with the `-ttt` format option, so the results can be presented in a timely order.
 * PATTERNS are interpreted as basic regular expressions (the default option when using `grep`).
 
 ## Examples
