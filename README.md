@@ -9,8 +9,7 @@ Notes:
 * **strace** must be executed with the `-ttt` format option, so that the results can be presented in a timely order.
 
 ## Examples
-What files mention `foo`?
-
+Which opened files contains the word `foo`?
 ```
 $ strace -ttt -o make.log make
 Traceback (most recent call last):
@@ -23,7 +22,18 @@ Exception: '
 $ backstrace make.log clever_function
 ```
 
-What files were opened?
+Which files were opened?
+```
+$ strace -ttt -o make.log make
+Traceback (most recent call last):
+  File "build_engine.py", line 42, in <module>
+    say('OMG')
+  File "build_engine.py", line 13, in say
+    print("Checking " + nam)
+Exception: '
+
+$ backstrace make.log -l
+```
 
 Notice how backstrace starts looking in the files that:
 - was most recently opened. This is good because it increases the likely-hood of looking in a file that caused the crash.
