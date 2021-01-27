@@ -37,7 +37,7 @@ $ backstrace make.log -l
 
 ## Implementation
 
-It uses [pystrace](https://github.com/dirtyharrycallahan/pystrace) to parse the strace log, and [grep](https://man7.org/linux/man-pages/man1/grep.1.html) to print the lines that matches a pattern. PATTERNS are interpreted as basic regular expressions (the default option when using grep). The strace '-ttt' format lets the results be presented in a timely order (starting with the most recently opened files).
+It [pystrace](https://github.com/dirtyharrycallahan/pystrace) project is used to parse the strace log, and [grep](https://man7.org/linux/man-pages/man1/grep.1.html) to print the lines that matches a pattern. PATTERNS are interpreted as basic regular expressions (the default option when using grep). The strace '-ttt' format lets the results be presented in a timely order (starting with the most recently opened files).
 
 ## Syntax
 backstrace [OPTION...] [PATTERN ..] [FILE]
