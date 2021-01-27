@@ -2,8 +2,8 @@
 Searches for PATTERNS in each file that was opened by a traced process, by analyzing the output from [strace](https://man7.org/linux/man-pages/man1/strace.1.html). 
 
 The primary goals of `backstrace` are:
-* List files that where opened before an unexpected program exit.
-* Find patterns in recently opened files that might provide hints about a problem.
+* Identify the most recently opened files that might be causing an unexpected program exit.
+* Identify a pattern in the most recently opened files, that might might provide hints about an unexpected program exit.
 
 ## Examples
 What files mention `foo`?
