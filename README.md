@@ -5,6 +5,9 @@ The primary goals of `backstrace` are:
 * Identify the most recently opened files that might be causing an unexpected program exit.
 * Identify a pattern in the most recently opened files, that might might provide hints about an unexpected program exit.
 
+Notes:
+* **strace** must be executed with the `-ttt` format option, so that the results can be presented in a timely order.
+
 ## Examples
 What files mention `foo`?
 
@@ -21,10 +24,6 @@ $ backstrace make.log clever_function
 ```
 
 What files were opened?
-
-Notes:
-* **strace** must be executed with the `-ttt` format option, this is needed so that the results can be presented in a timely order.
-
 
 Notice how backstrace starts looking in the files that:
 - was most recently opened. This is good because it increases the likely-hood of looking in a file that caused the crash.
