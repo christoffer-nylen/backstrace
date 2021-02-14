@@ -12,7 +12,7 @@ Notes:
 ## Examples
 Which opened files contains the word `foo`?
 ```
-$ strace -ttt -o make.log make
+$ strace -ttt -f -o make.log make
 Traceback (most recent call last):
   File "build_engine.py", line 42, in <module>
     say('OMG')

@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/env python2.7
 from __future__ import print_function
 
 import optparse
@@ -21,7 +21,7 @@ def run_cmd(bashCmd):
 
 def print_entry(entry):
     print("%s %s %s %s %s %s %s %s %s %s %s %s" % (entry.timestamp,
-                                                   entry.syscall name,
+                                                   entry.syscall_name,
                                                    entry.category,
                                                    len(entry.syscall_arguments),
                                                    array_safe_get(entry.syscall_arguments, 0),
@@ -35,12 +35,17 @@ def print_entry(entry):
                                                    
 def main(argv):
     parser = optparse.OptionParser('usage backstrace: [OPTIONS] FILE PATTERN [PATTERN ..]')
-    parser.set_description(__doc__.strip())
+#    parser.set_description(__doc__.strip())
     parser.add_option('-c', '--no-color',
                       action="store_false",
                       dest="useColor",
                       help="Don't use markers to highlight the matching strings",
                       default=True)
+    parser.add_option('-d', '--debug',
+                      action="store_true",
+                      dest="useDebug",
+                      help="Print infromation about backstrace failures",
+                      default=False)
     parser.add_option('-l', '--files-with-matches',
                       action="store_true",
                       dest="printOnlyFilesWithMatches",
@@ -86,11 +91,34 @@ def main(argv):
     strace_list = list()
     for entry in strace_stream:
         strace_list.append(entry)
-        
-    for entry in reversed(strace_list):
+
+    at_fdcwd={}
+    num_internal_failures=0
+    cwd=os.getcwd()
+    
+    #for entry in reversed(strace_list):
+    for entry in strace_list:
         #print_entry(entry)
-        if entry.syscall_name == "open":
+        filename=None
+        if not entry.pid in at_fdcwd:
+            at_fdcwd[entry.pid]=cwd
+        if entry.syscall_name in ["open", "stat"]:
             filename = array_safe_get(entry.syscall_arguments, 0).strip('\"')
+        elif entry.syscall_name in ["chdir"]:
+            # Will not work when parallell processes are in different directories.
+            # @TODO1: Implement support to track partent and child cwd
+            at_fdcwd[entry.pid] = array_safe_get(entry.syscall_arguments, 0).strip('\"')
+        elif entry.syscall_name in ["clone"]:
+            at_fdcwd[entry.return_value] = at_fdcwd[entry.pid]
+        elif entry.syscall_name in ["openat"]:
+            filename = array_safe_get(entry.syscall_arguments, 1).strip('\"')
+            if not os.path.isabs(filename):
+                filename_rel = filename
+                filename = os.path.join(at_fdcwd[entry.pid], filename)
+                if opts.useDebug and not filename in checked_files and not os.access(filename, os.R_OK):
+                    print("debug: %s: '%s' + '%s' not found (see @TODO1)" % (entry.pid, at_fdcwd[entry.pid],filename_rel))
+                    num_internal_failures = num_internal_failures + 1
+        if filename:
             if not os.access(filename, os.R_OK):
                 continue
             if os.path.isdir(filename):
@@ -98,6 +126,8 @@ def main(argv):
             if filename.startswith(tuple(linux_dir)):
                 continue
             if filename.startswith(tuple(user_dir)):
+                continue
+            if filename in checked_files:
                 continue
             checked_files.add(filename)
             if patterns:
@@ -114,7 +144,10 @@ def main(argv):
                     for i, line in enumerate(lines):
                         print("%s:%s:%s" % (filename, i, line), end="")
                         
-    strace_stream_close()
+    strace_stream.close()
+
+    if opts.useDebug and num_internal_failures != 0:
+        print("debug messages: %s" % num_internal_failures)
     
 if __name__ == '__main__':
     main(sys.argv[1:])
