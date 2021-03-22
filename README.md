@@ -13,7 +13,7 @@ $ make
 src/my_ctrl/my_ctrl.cpp:85: error: ´struct CI::CI_Dark::CI_Dark_Ctrl::Foo_Type´ has no member named `Dark_Mode_Setting`
 ```
 
-Use `strace` together with `backstrace` to identify opened files that contain `Foo_Type`:
+Use `strace` together with `backstrace` to identify opened files that contain some pattern related to the failure:
 
 ```
 $ strace -ttt -f -o strace.log make
