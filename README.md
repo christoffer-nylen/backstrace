@@ -10,30 +10,24 @@ Notes:
 * PATTERNS are interpreted as basic regular expressions (the default option when using `grep`).
 
 ## Examples
-Which opened files contains the word `foo`?
+
+Which opened files contains the word `Foo_Type`?
 ```
 $ strace -ttt -f -o make.log make
-Traceback (most recent call last):
-  File "build_engine.py", line 42, in <module>
-    say('OMG')
-  File "build_engine.py", line 13, in say
-    print("Checking " + nam)
-Exception: '
+src/my_ctrl/my_ctrl.cpp:85: error: ´struct CI::CI_Dark::CI_Dark_Ctrl::Foo_Type´ has no member named `Dark_Mode_Setting`
 
-$ backstrace make.log clever_function
+$ backstrace make.log Foo_Type
+../../../types/ci/ci_dark/my_ctrl_types.hpp:58:struct Foo_Type {
+src/my_ctrl/my_ctrl.cpp:46: *dark_ctrl, CI::CI_Dark::CI_Dark_Ctrl::Foo_Type *ctrls);
+src/my_ctrl/my_ctrl.cpp:43:           *dark_ctrl, CI::CI_Dark::CI_Dark_Ctrl::Foo_Type
 ```
 
 Which files were opened?
 ```
 $ strace -ttt -o make.log make
-Traceback (most recent call last):
-  File "build_engine.py", line 42, in <module>
-    say('OMG')
-  File "build_engine.py", line 13, in say
-    print("Checking " + nam)
-Exception: '
-
 $ backstrace make.log -l
+../../../types/ci/ci_dark/my_ctrl_types.hpp
+src/my_ctrl/my_ctrl.cpp
 ```
 
 ## Syntax
