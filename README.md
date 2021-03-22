@@ -1,7 +1,7 @@
 # backstrace
 Searches for PATTERNS in each file that was opened by a traced process, by analyzing the output from [strace](https://man7.org/linux/man-pages/man1/strace.1.html). 
 
-The `backstrace` tool was developed to help troubleshooting build failures in complex build systems, but can be used for other purposes.
+The main purpose of the tool is to help troubleshooting build failures in complex build systems, but it can be used for other as well.
 
 ## Example
 
