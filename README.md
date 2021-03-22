@@ -28,10 +28,8 @@ $ backstrace strace.log -l
 src/my_ctrl/my_ctrl.cpp
 ```
 
-## Syntax
-backstrace [OPTION...] [PATTERN ..] [FILE]
+## Limitations
 
-Notes:
 * `strace` must be executed with the `-ttt` format option, so the results can be presented in a timely order.
 * PATTERNS are interpreted as basic regular expressions (the default option when using `grep`).
 
