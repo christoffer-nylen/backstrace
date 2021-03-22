@@ -5,7 +5,7 @@ The `backstrace` tool was developed to help troubleshooting build failures in co
 
 ## Example
 
-Build error:
+Build failure:
 ```
 $ make
 src/my_ctrl/my_ctrl.cpp:85: error: ´struct CI::CI_Dark::CI_Dark_Ctrl::Foo_Type´ has no member named `Dark_Mode_Setting`
