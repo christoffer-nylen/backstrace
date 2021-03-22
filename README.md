@@ -17,7 +17,8 @@ $ make
 src/my_ctrl/my_ctrl.cpp:85: error: ´struct CI::CI_Dark::CI_Dark_Ctrl::Foo_Type´ has no member named `Dark_Mode_Setting`
 ```
 
-Which opened files contains the word `Foo_Type`?
+The user can use `strace` together with `backtrace` to figure out where the `Foo_Type` is defined:
+
 ```
 $ strace -ttt -f -o make.log make
 src/my_ctrl/my_ctrl.cpp:85: error: ´struct CI::CI_Dark::CI_Dark_Ctrl::Foo_Type´ has no member named `Dark_Mode_Setting`
@@ -26,14 +27,6 @@ $ backstrace make.log Foo_Type
 ../../../types/ci/ci_dark/my_ctrl_types.hpp:58:struct Foo_Type {
 src/my_ctrl/my_ctrl.cpp:46: *dark_ctrl, CI::CI_Dark::CI_Dark_Ctrl::Foo_Type *ctrls);
 src/my_ctrl/my_ctrl.cpp:43:           *dark_ctrl, CI::CI_Dark::CI_Dark_Ctrl::Foo_Type
-```
-
-Which files were opened when running `make`?
-```
-$ strace -ttt -o make.log make
-$ backstrace make.log -l
-../../../types/ci/ci_dark/my_ctrl_types.hpp
-src/my_ctrl/my_ctrl.cpp
 ```
 
 ## Syntax
