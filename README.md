@@ -5,11 +5,7 @@ The primary goals of `backstrace` are:
 * Identify files that was recently opened by a process - that might explain an unexpected program termination.
 * Identify patterns in files that was recently opened by a process - that might explain an unexpected program termination.
 
-Notes:
-* `strace` must be executed with the `-ttt` format option, so the results can be presented in a timely order.
-* PATTERNS are interpreted as basic regular expressions (the default option when using `grep`).
-
-## Examples
+## Example
 
 When user get a build error:
 ```
@@ -32,6 +28,10 @@ src/my_ctrl/my_ctrl.cpp:85:                          Dark_Mode_Setting
 
 ## Syntax
 backstrace [OPTION...] [PATTERN ..] [FILE]
+
+Notes:
+* `strace` must be executed with the `-ttt` format option, so the results can be presented in a timely order.
+* PATTERNS are interpreted as basic regular expressions (the default option when using `grep`).
 
 ## Implementation
 
