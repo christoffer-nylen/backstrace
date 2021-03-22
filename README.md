@@ -20,9 +20,11 @@ src/my_ctrl/my_ctrl.cpp:85: error: ´struct CI::CI_Dark::CI_Dark_Ctrl::Foo_Type�
 The user can use `strace` together with `backtrace` to figure out where the `Foo_Type` is defined:
 
 ```
+# Step 1: Create an STrace log
 $ strace -ttt -f -o make.log make
 src/my_ctrl/my_ctrl.cpp:85: error: ´struct CI::CI_Dark::CI_Dark_Ctrl::Foo_Type´ has no member named `Dark_Mode_Setting`
 
+# Step 2: Search the opened files in the strace log for the word Foo_Type
 $ backstrace make.log Foo_Type
 ../../../types/ci/ci_dark/my_ctrl_types.hpp:58:struct Foo_Type {
 src/my_ctrl/my_ctrl.cpp:46: *dark_ctrl, CI::CI_Dark::CI_Dark_Ctrl::Foo_Type *ctrls);
