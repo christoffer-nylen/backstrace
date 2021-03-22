@@ -1,7 +1,9 @@
 # backstrace
 Searches for PATTERNS in each file that was opened by a traced process, by analyzing the output from [strace](https://man7.org/linux/man-pages/man1/strace.1.html). 
 
-The main purpose of the tool is to help troubleshooting build failures in complex build systems, but it can be used for other as well.
+The main purpose of the tool is to help troubleshooting build failures in complex build systems, but it can be used for other purposes as well.
+
+Internally, the [pystrace](https://github.com/dirtyharrycallahan/pystrace) project is used to parse the strace log, and [grep](https://man7.org/linux/man-pages/man1/grep.1.html) is used for searching and presenting the lines that match a pattern.
 
 ## Example
 
@@ -32,7 +34,3 @@ src/my_ctrl/my_ctrl.cpp
 
 * `strace` must be executed with the `-ttt` format option, so the results can be presented in a timely order.
 * PATTERNS are interpreted as basic regular expressions (the default option when using `grep`).
-
-## Implementation
-
-The [pystrace](https://github.com/dirtyharrycallahan/pystrace) project is used to parse the strace log, and [grep](https://man7.org/linux/man-pages/man1/grep.1.html) is used for searching and presenting the lines that match a pattern.
