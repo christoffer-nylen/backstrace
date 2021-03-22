@@ -11,24 +11,23 @@ Notes:
 
 ## Examples
 
-The user get the following build error:
+When user get a build error:
 ```
 $ make
 src/my_ctrl/my_ctrl.cpp:85: error: ´struct CI::CI_Dark::CI_Dark_Ctrl::Foo_Type´ has no member named `Dark_Mode_Setting`
 ```
 
-The user can use `strace` together with `backtrace` to figure out where the `Foo_Type` is defined:
+..the user can use `strace` together with `backstrace` to search all opened files for patterns:
 
 ```
-# Step 1: Create an strace log
 $ strace -ttt -f -o strace.log make
 src/my_ctrl/my_ctrl.cpp:85: error: ´struct CI::CI_Dark::CI_Dark_Ctrl::Foo_Type´ has no member named `Dark_Mode_Setting`
 
-# Step 2: Search all opened files for "Foo_Type"
 $ backstrace strace.log Foo_Type
 ../../../types/ci/ci_dark/my_ctrl_types.hpp:58:struct Foo_Type {
 src/my_ctrl/my_ctrl.cpp:46: *dark_ctrl, CI::CI_Dark::CI_Dark_Ctrl::Foo_Type *ctrls);
 src/my_ctrl/my_ctrl.cpp:43:           *dark_ctrl, CI::CI_Dark::CI_Dark_Ctrl::Foo_Type
+src/my_ctrl/my_ctrl.cpp:85:                          Dark_Mode_Setting
 ```
 
 ## Syntax
