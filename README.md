@@ -1,7 +1,7 @@
 # backstrace
 Searches for PATTERNS in each file that was opened by a process, by analyzing output from [strace](https://man7.org/linux/man-pages/man1/strace.1.html). 
 
-Its main purpose is to help with troubleshooting of complex build systems, but it can be used for other purposes as well.
+It was made to to help with troubleshooting of complex build systems, but can be used for other purposes as well.
 
 Internally, the [pystrace](https://github.com/dirtyharrycallahan/pystrace) project is used to parse the strace log, and [grep](https://man7.org/linux/man-pages/man1/grep.1.html) is used for searching and presenting the lines that match a pattern.
 
