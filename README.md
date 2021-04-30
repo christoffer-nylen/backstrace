@@ -1,4 +1,4 @@
-# backstrace
+# backstrace (bs)
 Searches for PATTERNS in each file that was opened by a process, by analyzing [strace](https://man7.org/linux/man-pages/man1/strace.1.html) output.
 
 This can be helpful when searching for some definition or symbol that was thrown in a compile error, traceback or exception message from a faulty program or failing build system.
