@@ -3,7 +3,7 @@ Searches for PATTERNS in each file that was opened by a process, by analyzing [s
 
 This can be helpful when searching for some definition or symbol that was thrown in a compile error, traceback or exception message from a faulty program or failing build system.
 
-Internally, the [pystrace](https://github.com/dirtyharrycallahan/pystrace) project is used to parse the strace log, and [grep](https://man7.org/linux/man-pages/man1/grep.1.html) is used for searching and presenting the lines that match a pattern.
+Internally, [pystrace](https://github.com/dirtyharrycallahan/pystrace) is used to parse the strace log, and [grep](https://man7.org/linux/man-pages/man1/grep.1.html) is used for searching and presenting the lines that match a pattern.
 
 ## Example
 
