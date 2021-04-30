@@ -1,5 +1,5 @@
 # backstrace
-Searches for PATTERNS in each file that was opened by a process, by analyzing the output from [strace](https://man7.org/linux/man-pages/man1/strace.1.html). 
+Searches for PATTERNS in each file that was opened by a process, by analyzing output from [strace](https://man7.org/linux/man-pages/man1/strace.1.html). 
 
 The main purpose of the tool is to help with troubleshooting of complex build systems, but it can be used for other purposes as well.
 
